@@ -1,0 +1,12 @@
+<div *ngIf="preview" class="add-affiche-preview-div">
+    <affiche [customTitle]="title" [customText]="ckeditorContent"></affiche>
+</div>
+
+<input [(ngModel)]="title" type="text" class="form-control" ngbTooltip="Заголовок" placeholder="Заголовок">
+<input [(ngModel)]="img" type="text" class="form-control" ngbTooltip="Быстрое изображение" placeholder="Ссылка на изображение">
+<textarea [(ngModel)]="description" class="form-control" ngbTooltip="Краткое описание" placeholder="Краткое описание"></textarea>
+<ckeditor [(ngModel)]="ckeditorContent"></ckeditor>
+
+<button *ngIf="!changeAffiche" class="add-affiche-accept-button btn btn-success" (click)="addAffiche()">Добавить</button>
+<button *ngIf="changeAffiche" class="add-affiche-accept-button btn btn-success" (click)="addAffiche()">Изменить</button>
+<button class="add-affiche-preview-button btn btn-info" (click)="previewAffiche()">Предпросмотр</button>

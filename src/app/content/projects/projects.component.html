@@ -1,0 +1,20 @@
+<!-- Admin panel -->
+<div *ngIf="loginService.username !== null" class="admin-panel-wrapper">
+    <div class="admin-panel-title">Админка</div>
+    <div class="admin-panel-add-button" [routerLink]="['/admin/add-project', '']">Добавить проект</div>
+</div>
+
+<!-- Calendar -->
+<!-- <ngb-datepicker></ngb-datepicker> -->
+<!-- <calendar></calendar> -->
+<!-- Affiches list -->
+<div class="objects-previews-wrapper">
+    <div *ngFor="let object of objects" class="objects-preview-wrapper-wrap">
+        <div class="objects-preview-wrapper" [routerLink]="['/project/' + object.link]">
+            <img src="{{ object.img }}" class="objects-preview-img">
+            <div class="objects-preview-title">{{ object.title }}</div>
+            <div class="objects-preview-description">{{ object.description }}</div>
+        </div>
+        <div class="hr"></div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div *ngIf="loginService.username === null">
+    <form onsubmit="return false;">
+        <input type="text" class="admin-username-input" #username placeholder="Имя пользователя">
+        <input type="password" class="admin-password-input" #password placeholder="Пароль">
+        <button type="submit" class="admin-login-button" (click)="login(username.value, password.value, $event)">Войти</button>
+    </form>
+</div>
+
+<div *ngIf="loginService.username !== null">
+    <button class="admin-logout-button" (click)="logout()">Выйти</button>
+    <br><br>
+
+    <form onsubmit="return false;">
+        <input type="password" #oldPass placeholder="Старый пароль"><br>
+        <input type="password" #newPass placeholder="Новый пароль"><br>
+        <input type="password" #newPassAgain placeholder="Новый пароль ещё раз"><br>
+        <button type="submit" (click)="changePassword(oldPass.value, newPass.value, newPassAgain.value)">Изменить пароль</button>
+    </form>
+</div>

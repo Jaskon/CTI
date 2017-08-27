@@ -1,1 +1,132 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'styles-variables.scss';
+
+/* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-bottom: 240px;      // Depends on footer height (app/app.component.scss)
+    position: relative;
+
+    @media all and (min-width: $screen-width-2) {
+        padding-bottom: 300px;
+    }
+
+    @media all and (max-width: $screen-width-1) {
+        padding-bottom: 160px;
+    }
+}
+
+// Custom font (used in menu items)
+@font-face {
+    font-family: 'MyriadPro-BoldCond';        // Name of the font
+    src: url('assets/MyriadPro-BoldCond.otf');
+}
+
+@font-face {
+    font-family: 'MyriadPro-Cond';        // Name of the font
+    src: url('assets/MyriadPro-Cond.otf');
+}
+
+
+
+
+// Admin panel
+.admin-panel-wrapper {
+    border-bottom: 1px solid black;
+    font-family: MyriadPro-Cond;
+    font-size: 12pt;
+    margin-bottom: 10px;
+    padding: 0 0 4px 0;
+}
+
+.admin-panel-title {
+    border-right: 1px solid black;
+    display: table-cell;
+    font-family: MyriadPro-BoldCond;
+    padding: 0 10px 0 10px;
+}
+
+.admin-panel-add-button {
+    border-left: 1px solid black;
+    cursor: pointer;
+    display: table-cell;
+    padding: 0 10px 0 10px;
+}
+
+
+
+// Content components inner styles
+.objects-preview-wrapper {
+    background-color: rgba(255,255,255, .3);
+    border: 1px solid transparent;
+    border-radius: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    overflow: auto;
+    padding: 10px;
+    transition: .75s, border .15s;
+}
+.objects-preview-wrapper:hover {
+    background-color: rgba(255,255,255, .6);
+    border: 1px solid green;
+}
+
+.objects-preview-title {
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.objects-preview-img {
+    border: 1px solid black;
+    float: left;
+    margin-right: 8px;
+    min-height: 80px;
+    min-width: 120px;
+}
+
+.objects-preview-description {
+    font-size: 14pt;
+}
+
+.hr {
+    border: 1px solid black;
+    clear: left;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+.objects-preview-wrapper-wrap:last-child .hr {
+    display: none;
+}
+
+
+// Single object (e.g. affiche)
+.object-wrapper {
+    background-color: rgba(255,255,255, .3);
+    border-radius: 4px;
+    padding: 8px 10px;
+}
+
+.object-title {
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.object-text {
+    font-size: 14pt;
+}
+

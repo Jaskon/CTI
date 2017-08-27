@@ -1,0 +1,12 @@
+<!-- Admin panel -->
+<div *ngIf="!customObject && loginService.username !== null" class="admin-panel-wrapper">
+    <div class="admin-panel-title">Админка</div>
+    <div class="admin-panel-add-button" [routerLink]="['/admin/add-project', id]">Изменить проект</div>
+    <div class="admin-panel-add-button" (click)=deleteAffiche()>Удалить проект</div>
+</div>
+
+<!-- Affiche -->
+<div class="object-wrapper">
+    <div class="object-title" [innerHTML]="(customObject ? customTitle : object.title) | safeHtml"></div>
+    <div class="object-text" [innerHTML]="(customObject ? customText : object.text) | safeHtml"></div>
+</div>

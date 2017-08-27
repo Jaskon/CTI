@@ -1,0 +1,383 @@
+@import '../styles-variables.scss';
+
+/* SIZES */
+// w < 1001px        // mobiles and very small screens (hidden menu that opens with swipe, smaller header, footer, content)
+// w > 1000px && w < 1501px      // normal sizes: PCs and most of tablets (normal sizes of header, footer and content)
+// w > 1500px       // very big screens, especially with 4k monitors (content is a little below and bigger then normal; menu, footer and header are bigger)
+/* SIZES */
+
+/* 
+    FIRST ALWAYS
+    media (min-width: $screen-width-2) IS FOR BIG SCREENS
+    (= 4k screens)
+
+    SECOND ALWAYS
+    media (max-width: $screen-width-1) IS FOR SMALL SCREENS
+    (= mobiles)
+
+
+    COPY FROM HERE
+
+    @media all and (min-width: $screen-width-2) {
+        
+    }
+
+    @media all and (max-width: $screen-width-1) {
+        
+    }
+*/
+
+// Button in the footer only visible if u logged in as admin
+.admin-button {
+    border: 1px solid transparent;
+    bottom: .9%;
+    cursor: pointer;
+    left: 6.3%;
+    padding: 1px 2px;
+    pointer-events: auto;
+    position: absolute;
+}
+.admin-button:hover {
+    border-color: black;
+}
+
+.background {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    transition: $theme-transition;
+    width: 100%;
+    z-index: -9999;
+}
+.background.active {
+    opacity: 1;
+}
+
+.background.img1 {
+    background: url(../assets/Фон_НЕпрозрачный_кусок.png) 10px 0 repeat;
+    background-size: 300px;
+}
+
+.background.img2 {
+    background: url(../assets/Фон2_тест.png) -10px 10px repeat;
+    background-size: 300px;
+}
+
+.background.img3 {
+    background: url(../assets/Фон3_тест.png) -200px 140px repeat;
+    background-size: 300px;
+}
+
+
+/* Header */
+.header-wrapper {
+    height: 350px;
+    left: 50%;
+    pointer-events: none;       // ??
+    position: absolute;
+    top: -12px;
+    transform: translateX(-45%) translateY(-10%);
+    width: 1000px;
+    z-index: 11;
+
+    @media all and (min-width: $screen-width-2) {
+        height: 490px;
+        top: -18px;
+        width: 1400px;
+    }
+
+    @media all and (max-width: $screen-width-1) {
+        height: 224px;
+        left: calc(50% - 40px);
+        top: -6px;
+        width: 640px;
+    }
+
+    .header-design-element {
+        background: url(../assets/Шапка_элем-оформления_задник_полный-размер.png) 0 0 no-repeat;
+        background-size: 100%;
+        height: 350px;
+        transition: $theme-transition;
+        width: 100%;
+        z-index: -9998;
+    }
+    /*.header-design-element.background1 {
+        filter: hue-rotate(0);
+    }
+    .header-design-element.background2 {
+        filter: hue-rotate(100deg);
+    }
+    .header-design-element.background3 {
+        filter: hue-rotate(-100deg);
+    }*/
+
+    .header-title {
+        bottom: 70%;
+        font-family: MyriadPro-BoldCond;
+        font-size: 36px;
+        height: 13%;
+        right: 20%;
+        pointer-events: auto;
+        position: absolute;
+        text-align: center;
+        width: 36%;
+
+        @media all and (min-width: $screen-width-2) {
+            font-size: 52px;
+        }
+
+        @media all and (max-width: $screen-width-1) {
+            font-size: 23px;
+        }
+
+        &.header-title-1 {
+            background: url(../assets/Хедер_тайтл-1_задник.png) 0 0 no-repeat;
+            background-size: 100% 100%;
+            height: 13%;
+            right: 27%;
+            width: 21%;
+        }
+
+        &.header-title-2 {
+            background: url(../assets/Хедер_тайтл-2_задник.png) 0 0 no-repeat;
+            background-size: 100% 100%;
+            height: 13%;
+            right: 26%;
+            width: 24%;
+        }
+
+        &.header-title-3 {
+            background: url(../assets/Хедер_тайтл-3_задник.png) 0 0 no-repeat;
+            background-size: 100% 100%;
+        }
+
+        &.header-title-4 {
+            background: url(../assets/Хедер_тайтл-4_задник.png) 0 0 no-repeat;
+            background-size: 100% 100%;
+            bottom: 69%;
+            height: 14%;
+            right: 26%;
+            width: 24%;
+        }
+
+        &.header-title-5 {
+            background: url(../assets/Хедер_тайтл-5_задник.png) 0 0 no-repeat;
+            background-size: 100% 100%;
+            bottom: 71%;
+            height: 10%;
+            right: 19%;
+            width: 38%;
+        }
+
+        &.header-title-6 {
+            background: url(../assets/Хедер_тайтл-6_задник.png) 0 0 no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+
+    .header-logo {
+        background: url(../assets/Лого.png) 0 0 no-repeat;
+        background-size: 100%;
+        height: 170px;
+        pointer-events: auto;
+        position: absolute;
+        right: 0;
+        top: 50px;
+        width: 170px;
+
+        @media all and (min-width: $screen-width-2) {
+            height: 240px;
+            top: 70px;
+            width: 240px;
+        }
+
+        @media all and (max-width: $screen-width-1) {
+            height: 120px;
+            right: -10px;
+            top: 30px;
+            width: 120px;
+        }
+    }
+}
+
+
+/* Content */
+.content-component {
+    box-sizing: content-box;
+    background-color: rgba(255,255,255, .33);
+    display: block;
+    font-size: 24px;
+    margin-left: 550px;
+    margin-right: 3%;
+    margin-top: 150px;
+    max-width: 640px;
+    padding: 10px;
+    pointer-events: auto;
+    position: relative;
+    transition: z-index 1s;
+    z-index: 1;
+
+    &.menu-opened {
+        @media all and (max-width: $screen-width-1) {
+            // Чтобы контент был ниже меню во время его открытия в мобильном режиме
+            transition: none;
+            z-index: -1;
+        }
+    }
+
+    @media all and (min-width: $screen-width-2) {
+        margin-left: 700px;
+        margin-right: 6%;
+        margin-top: 250px;
+        max-width: none;
+    }
+
+    @media all and (max-width: $screen-width-1) {
+        margin-left: 140px;
+        margin-top: 120px;
+        max-width: none;
+    }
+}
+
+
+/* Footer */
+.footer-wrapper {
+    bottom: 0;
+    height: 350px;
+    left: 50%;
+    pointer-events: none;       // ??
+    position: absolute;
+    transform: translateX(-50%) translateY(0);
+    width: 1000px;
+    z-index: 12;
+
+    @media all and (min-width: $screen-width-2) {
+        width: 1400px;
+    }
+
+    @media all and (max-width: $screen-width-1) {
+        width: 640px;
+    }
+
+    .footer-design-element {
+        background: url(../assets/Подвал_задник_как-есть.png) 0 bottom no-repeat;
+        background-size: 100%;
+        height: 350px;
+        transition: $theme-transition;
+        width: 100%;
+    }
+
+    .footer-description {
+        bottom: 100px;
+        color: rgb(153, 125, 97);
+        font-family: MyriadPro-BoldCond;
+        font-size: 40px;
+        height: 46px;
+        //left: 150px;
+        pointer-events: auto;
+        position: absolute;
+        right: 50%;
+        transform: translateX(-9%);
+        //width: 334px;
+        width: 33%;
+
+        @media all and (min-width: $screen-width-2) {
+            bottom: 140px;
+            height: 70px;
+        }
+
+        @media all and (max-width: $screen-width-1) {
+            bottom: 60px;
+            height: 32px;
+        }
+    }
+
+    .footer-contacts-wrapper {
+        bottom: 20px;
+        font-family: MyriadPro-BoldCond;
+        height: 127px;
+        pointer-events: auto;
+        position: absolute;
+        right: 35.2%;
+        text-align: right;
+        width: 11.8%;
+        transform: scaleX(1.24);
+
+        @media all and (min-width: $screen-width-2) {
+            height: 190px;
+        }
+
+        @media all and (max-width: $screen-width-1) {
+            height: 72px;
+        }
+    }
+
+    .footer-updates-wrapper {
+        bottom: 20px;
+        font-family: MyriadPro-BoldCond;
+        height: 70px;
+        pointer-events: auto;
+        position: absolute;
+        right: 60%;
+        width: 230px;
+
+        @media all and (min-width: $screen-width-2) {
+            bottom: 40px;
+            right: 63%;
+            transform: scale(1.4);
+        }
+
+        @media all and (max-width: $screen-width-1) {
+            bottom: 0;
+            right: 55%;
+            transform: scale(0.6);
+        }
+
+        .footer-updates-title-wrapper {
+            background: url(../assets/Подвал_обновления_тайтл-задник.png) 0 0 no-repeat;
+            background-size: 100% 100%;
+            font-size: 20px;
+            margin-bottom: 8px;
+            text-align: left;
+            transform: scaleX(1.0);
+        }
+
+        .footer-updates-input-email {
+            height: 22px;
+            width: 82%;
+        }
+
+        .footer-updates-input-name {
+            height: 22px;
+            width: 75%;
+        }
+
+        .footer-updates-ok-wrapper {
+            background: url(../assets/Подвал_обновления_ок-задник.png) 0 0 no-repeat;
+            background-size: 100% 100%;
+            cursor: pointer;
+            display: inline;
+        }
+    }
+
+    .footer-map-wrapper {
+        border: 2px solid black;
+        bottom: 20px;
+        cursor: pointer;
+        height: 170px;
+        pointer-events: auto;
+        position: absolute;
+        right: 8.8%;
+        width: 24%;
+
+        @media all and (min-width: $screen-width-2) {
+            height: 240px;
+        }
+
+        @media all and (max-width: $screen-width-1) {
+            height: 108px;
+        }
+    }
+}

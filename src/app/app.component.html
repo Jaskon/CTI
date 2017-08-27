@@ -1,20 +1,67 @@
-<!--The whole content below can be removed with the new code.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=" />
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="http://angularjs.blogspot.ca/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- Random 1px element to fix position of header -->
+<div style="height: 1px; position: relative;"></div>
 
+
+<!-- Background(s) -->
+<div *ngFor="let numb of [1,2,3]" class="background img{{numb}}" [ngClass]="{'active': activeBackground === numb}">
+</div>
+
+<!-- Header -->
+<div class="header-wrapper">
+    <div class="header-design-element background{{activeBackground}}"></div>
+    <div class="header-logo"></div>
+    <!-- Titles -->
+    <div *ngFor="let title of headerTitles"
+            class="header-title header-title-{{title.numb}} global-font-resize">
+        &nbsp;&nbsp;&nbsp;{{title.text}}&nbsp;&nbsp;&nbsp;
+    </div>
+</div>
+
+<!-- Menu -->
+<div class="menu-wrapper">
+    <div class="menu-design-element" (click)="openMenu()"></div>
+    <div class="menu-items-wrapper">
+        <a *ngFor="let item of menuItems" class="menu-item menu-item-{{item.numb}}" [ngClass]="{'menu-opened': menuOpened}"
+                [routerLink]="['/' + item.link]"> <!-- (click)="menuItemClicked(item)" -->
+            <div class="menu-item-background menu-item{{item.numb}}-background"></div>
+            <span id="item-span{{item.numb}}">{{item.text}}</span>
+        </a>
+    </div>
+</div>
+
+<!-- Content -->
+<!-- <content class="content-component" [ngClass]="{'menu-opened': menuOpened}"></content> -->
+<div class="content-component" [ngClass]="{'menu-opened': menuOpened}">
+    <router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<div class="footer-wrapper">
+    <div class="footer-design-element"></div>
+    <div class="footer-description global-font-resize">Цель ЦЕХа - создание проектов синтеза различных форм
+        искусств таких как хореография, пантомима, поэзия, технологии проекций, актёрское мастерствои др.
+    </div>
+    <div class="footer-updates-wrapper">
+        <div class="footer-updates-title-wrapper">&nbsp;&nbsp;Подписаться на обновления &nbsp;&nbsp;&nbsp;&nbsp;</div>
+        E-mail&nbsp; <input type="email" class="footer-updates-input-email" #emailInput> <br>
+        Имя&nbsp; <input type="text" class="footer-updates-input-name" #nameInput>
+        <div class="footer-updates-ok-wrapper" (click)="subscribe(emailInput.value, nameInput.value)">&nbsp;Оk&nbsp;&nbsp;&nbsp;</div>
+    </div>
+    <div class="footer-contacts-wrapper global-font-resize">
+        <span style="color: green">Контакты:</span> <br>
+        +37544 7452248 (vel) <br>
+        +37529 2355900 (мтс) <br>
+        <br>
+        <span style="color: #0096bc">Адрес:</span> <br>
+        ул. Пушкина 7 <br>
+        (второй корпус <br>
+        колледжа искусств)
+    </div>
+    <div class="footer-map-wrapper" (click)="mapRedirect()">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1720.213054106168!2d31.014655588009024!3d52.42935217557492!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6b30a73a9845c395!2z0LzQsNCz0LDQt9C40L0g0JzQo9CX0KvQmtCQ!5e0!3m2!1sru!2sus!4v1503706812358" frameborder="0" style="border:0;height:100%;width:100%" allowfullscreen></iframe>
+    </div>
+
+    <div *ngIf="loginService.username !== null" [routerLink]="['/admin']" class="admin-button">
+        Админка
+    </div>
+</div>

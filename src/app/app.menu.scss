@@ -1,0 +1,213 @@
+@import '../styles-variables.scss';
+
+/* Menu */
+.menu-wrapper {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 4;
+
+    @media all and (min-width: $screen-width-2) {
+        top: 10%;
+        transform: scale(1.2);
+    }
+
+    @media all and (max-width: $screen-width-1) {
+        transform: scale(0.9);
+    }
+
+    $menu-design-element-width: 120px;
+    $menu-design-element-height: 560px;
+
+    .menu-design-element {
+        background: url(../assets/Меню_элемент-оформления_полный-размер.png) 0 0 no-repeat;
+        background-position: 0 center;
+        background-size: contain;
+        pointer-events: none;
+        position: fixed;
+        //top: 54%;
+        transform: /*translateY(-51%)*/ translateY(-8%) translateX(-20%);
+        transition: filter $theme-transition;
+        //width: 13%;
+        z-index: 3;
+
+        // Статик (заменить на стили выше для уменьшаемости)
+        height: 1000px;
+        top: 0;
+        width: 200px;
+
+        @media all and (max-width: $screen-width-1) {
+            cursor: pointer;
+            pointer-events: auto;
+        }
+    }
+
+    /* Items */
+    .menu-items-wrapper {
+        position: fixed;
+        left: 0;
+        top: 100px;
+        pointer-events: none;
+        z-index: 2;
+
+        .menu-item-background {
+            height: 80%;
+            position: absolute;
+            right: 0;
+            width: 100%;
+        }
+
+        span {
+            color: black;
+            font-family: MyriadPro-BoldCond;
+            font-size: 30px;
+            //font-size: 2.15vw;
+            position: absolute;
+            right: 24px;
+            text-decoration: none;
+            top: -2px;
+        }
+
+        // Common things of '.menu-item-{{numb}}'
+        .menu-item {
+            cursor: pointer;
+            display: block;
+            filter: drop-shadow(5px 0 18px rgba(0,0,0,0.18));
+            height: 50px;
+            margin-left: -100px;
+            margin-top: 10px;
+            pointer-events: auto;
+            position: relative;
+            transition: filter $theme-transition, .5s;
+
+            &.menu-opened {
+                @media all and (max-width: $screen-width-1) {
+                    margin-left: -100px;
+                    z-index: 9999;
+                }
+            }
+
+            @media all and (max-width: $screen-width-1) {
+                margin-left: -260px;
+            }
+        }
+
+        .menu-item-1 {
+            background: url(../assets/Меню_пункт-1_задник_без-тени.png) 0 0 no-repeat;
+            width: 343px;
+
+            .menu-item1-background {
+                background: url(../assets/Меню_пункт-1_стрелка.png) 100% center no-repeat;
+            }
+        }
+        .menu-item-2 {
+            background: url(../assets/Меню_пункт-2_задник_без-тени.png) 0 0 no-repeat;
+            transform: translateX(11px);
+            width: 350px;
+
+            .menu-item2-background {
+                background: url(../assets/Меню_пункт-2_стрелка.png) 100% center no-repeat;
+            }
+
+            @media all and (max-width: $screen-width-1) {
+                margin-left: -278px;
+            }
+
+            span {
+                right: 22px;
+            }
+        }
+        .menu-item-3 {
+            background: url(../assets/Меню_пункт-3_задник_без-тени.png) 0 0 no-repeat;
+            margin-left: -114px;
+            margin-top: 40px;
+            transform: translateX(41px);
+            width: 410px;
+
+            .menu-item3-background {
+                background: url(../assets/Меню_пункт-3_стрелка.png) 100% center no-repeat;
+            }
+
+            span {
+                font-size: 29px;
+            }
+
+            @media all and (max-width: $screen-width-1) {
+                margin-left: -370px;
+
+                &.menu-opened {
+                    margin-left: -114px;
+                }
+            }
+        }
+        .menu-item-4 {
+            background: url(../assets/Меню_пункт-4_задник_без-тени.png) 0 0 no-repeat;
+            width: 396px;
+
+            .menu-item4-background {
+                background: url(../assets/Меню_пункт-4_стрелка.png) 100% center no-repeat;
+                height: 81%;
+            }
+
+            span {
+                font-size: 28px;
+            }
+
+            @media all and (max-width: $screen-width-1) {
+                margin-left: -316px;
+            }
+        }
+        .menu-item-5 {
+            background: url(../assets/Меню_пункт-5_задник_без-тени.png) 0 0 no-repeat;
+            height: 55px;
+            transform: translateX(54px);
+            width: 550px;
+
+            .menu-item5-background {
+                background: url(../assets/Меню_пункт-5_стрелка.png) 100% center no-repeat;
+                height: 78%;
+            }
+
+            span {
+                font-size: 23px;
+                top: 5px;
+            }
+
+            @media all and (max-width: $screen-width-1) {
+                margin-left: -524px;
+            }
+        }
+        .menu-item-6 {
+            background: url(../assets/Меню_пункт-6_задник_без-тени.png) 0 0 no-repeat;
+            transform: translateX(49px);
+            width: 460px;
+
+            .menu-item6-background {
+                background: url(../assets/Меню_пункт-6_стрелка.png) 100% center no-repeat;
+                height: 76%;
+                top: 2px;
+            }
+
+            @media all and (max-width: $screen-width-1) {
+                margin-left: -432px;
+            }
+
+            span {
+                font-size: 25.2px;
+                margin-top: 3px;
+                top: 1px;
+            }
+        }
+
+        .menu-item {
+            // This style need to be after 'background'. Else it will not work
+            // Thats why it dublicates
+            background-size: 100%;
+
+            .menu-item-background {
+                background-size: auto 80%;
+            }
+        }
+    }
+}
